@@ -1,7 +1,7 @@
 <template>
    <div class="taskItem" >
-        <div id="text" class="title" >{{ task.title }}</div>
-        <div id="text" class="date" >{{ task.body }}</div>
+        <div id="text" class="TaskHead" >{{ task.title }}</div>
+        <div id="text" class="TaskHead" >{{ task.body }}</div>
         <my-button
             @click="$emit('open',task)">
             Открыть
@@ -25,6 +25,11 @@ export default {
 }
 </script>
 <style>
+.TaskHead {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .taskItem {
   border: solid 1px black ;
   width: 700px;

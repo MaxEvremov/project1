@@ -41,9 +41,8 @@ export default {
   },
   methods: {
     changeOption () {
-      const sortParameter = this.nameValue.sortby
+      const sortParameter = this.nameValue.value
       this.$emit('option', sortParameter)
-      console.log(sortParameter)
     },
     hideDialog () {
       this.$emit('update:show', false)

@@ -1,9 +1,9 @@
 <template>
-<div id="window1">
+<div class="window1">
     <div id="modalWindow" class="modalwindow" v-for="task in dialogTask"
       :key="task.id">
-        <div id="title" class="titlewindow">{{task.id}}</div>
-        <div id="title" class="datewindow">{{task.title}}</div>
+        <div id="title" class="idwindow">Индекс: {{task.id}}</div>
+        <div id="title" class="titlewindow">{{task.title}}</div>
         <div id="textarea" class="textwindow">{{task.body}}</div>
         <my-button
           id="modalbutton"
@@ -33,12 +33,12 @@ export default {
 </script>
 
 <style>
-#window1 {
+.window1 {
     display: block;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
 }
 #modalWindow {
   display: block;
@@ -51,7 +51,8 @@ export default {
   margin-left: auto;
 }
 
-#title {
+.titlewindow {
+  color: black;
   border: solid 1px black ;
   border-radius: 10px;
   width: 470px;
@@ -61,7 +62,19 @@ export default {
   margin-left: 15px;
   background-color: rgb(250, 205, 120);
 }
+.idwindow {
+  color: black;
+  border: solid 1px black ;
+  border-radius: 10px;
+  width: 400px;
+  height: 40px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 48px;
+  background-color: rgb(250, 205, 120);
+}
 #textarea {
+  color: black;
   border: solid 1px black ;
   border-radius: 10px;
   align-items: center;

@@ -5,6 +5,7 @@
           Добавить
         </my-button>
         <my-input
+          v-focus
           v-model="task.title"
           type="text"
           placeholder="Введите Заголовок"
