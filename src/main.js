@@ -13,5 +13,4 @@ directives.forEach(directive => {
   app.directive(directive.name, directive)
 })
 
-app
-  .mount('#app')
+app.mount('#app')

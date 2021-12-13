@@ -1,3 +1,4 @@
+
 export default {
   mounted (element, binding) {
     const options = {

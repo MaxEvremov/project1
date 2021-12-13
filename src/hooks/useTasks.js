@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 
-export function useTasks (limit) {
+export default function useTasks (limit) {
   const tasks = ref([])
   const totalPages = ref(0)
   const isTasksLoading = ref(true)
-  const fetching = () => {
+  const fetching = async () => {
     try {
       const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
         params: {
@@ -15,11 +15,14 @@ export function useTasks (limit) {
       })
       totalPages.value = Math.ceil(response.headers['x-total-count'] / limit)
       tasks.value = response.data
-      isTasksLoading.value = false
+      console.log(tasks.value)
     } catch {
       alert('ошибка')
+    } finally {
+      isTasksLoading.value = false
     }
   }
+  console.log(tasks)
   onMounted(fetching)
   return {
     tasks, isTasksLoading, totalPages

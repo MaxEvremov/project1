@@ -8,7 +8,7 @@
         </div>
         <select
             class="selectInput"
-            v-model="nameValue"
+            v-model="nameValues"
             @change="changeOption">
             <option
                 v-for="option in options"
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     changeOption () {
-      const sortParameter = this.nameValue.value
+      const sortParameter = this.nameValues.value
       this.$emit('option', sortParameter)
     },
     hideDialog () {

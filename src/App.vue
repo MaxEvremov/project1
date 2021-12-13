@@ -1,44 +1,47 @@
 <template>
  <div id="App" class="app">
-   <h1 id="h1">Список </h1>
-    <buttonbar
-      @newElement = "showDialog"
-      @deleteAll = "deleteAllTasks"
-      @sort = "showSortMenu"
-      @find = "showFindidngInput"
-    />
-    <my-dialog
-      v-model:show.sync="dialogVisisble">
-      <inputbar
-      @create = "newElement"
-      @closeBar = "closeDialog"
+   <div>
+     {{selectedSort.value}}
+   </div>
+    <h1 id="h1">Список </h1>
+      <buttonbar
+        @newElement = "showDialog"
+        @deleteAll = "deleteAllTasks"
+        @sort = "showSortMenu"
+        @find = "showFindidngInput"
       />
-    </my-dialog>
-    <div>
-      <my-select
-        :options = "options"
-        v-show="tasks.length !== 0"
-        v-model:show.sync="syncVisible"
-        v-model="selectedSort"
-      >
-      </my-select>
-    </div>
-    <div class="searchInput" v-show="findinginput">
-        <my-input
-          placeholder="поиск..."
-          v-model= "searchQuery"
-          v-focus
+      <my-dialog
+        v-model:show.sync="dialogVisisble">
+        <inputbar
+        @create = "newElement"
+        @closeBar = "closeDialog"
+      />
+      </my-dialog>
+      <div>
+        <my-select
+          :options = "options"
+          v-show="tasks !== []"
+          v-model:show.sync="syncVisible"
+          v-model="selectedSort.value"
+        >
+        </my-select>
+        </div>
+        <div class="searchInput" v-show="findinginput">
+          <my-input
+            placeholder="поиск..."
+            v-model= "searchQuery"
+            v-focus
           >
-        </my-input>
-        <my-button>
+          </my-input>
+          <my-button>
             Найти
-        </my-button>
-        <my-button
-          @click="showFindidngInput">
+          </my-button>
+          <my-button
+            @click="showFindidngInput">
             Закрыть
-        </my-button>
-    </div>
-   <hr>
+          </my-button>
+        </div>
+  <hr>
    <modalWindow
       :dialogTask = "dialogTask"
       @close = "closeWindow"
@@ -50,13 +53,13 @@
       </h2>
       <loader/>
     </div>
-   <tasksList v-else
-      :tasks = "selectedTasks"
+    <tasksList v-else
+      :tasks = "sortedTasks"
       @remove = "removeElement"
       @open = "getRequiredElement"
-   />
-   <div v-intersection ="loadMoreTasks" :page = "page" class="observer"></div>
- </div>
+    />
+    <!-- <div v-intersection ="useTasks" :page = "page" class="observer"></div> -->
+  </div>
 </template>
 
 <script>
@@ -65,6 +68,9 @@ import inputbar from '@/components/Inputbar'
 import modalWindow from '@/components/ModalWindow'
 import tasksList from '@/components/TasksList'
 import loader from '@/components/Loader'
+import useTasks from '@/hooks/useTasks'
+import useSortedTasks from '@/hooks/useSortedTasks'
+import useSortedAndSearchedTasks from '@/hooks/useSortedAndSearchedTasks'
 
 export default {
   name: 'App',
@@ -75,20 +81,15 @@ export default {
         { id: 2, name: 'По айди', value: 'id' },
         { id: 3, name: 'По комментарию', value: 'body' }
       ],
-      tasks: [],
       dialogVisisble: false,
       syncVisible: false,
       dialogTask: null,
       nameValue: '',
       findinginput: false,
-      searchQuery: '',
-      isTasksLoading: true,
       pageNumber: 1,
       limit: 10,
-      totalPages: '',
       page: 1,
-      loadMoreTasks: false,
-      selectedSort: ''
+      loadMoreTasks: false
     }
   },
   methods: {
@@ -119,28 +120,23 @@ export default {
     deleteAllTasks () {
       this.tasks = []
     },
-    // sortFunction (field) {
-    //   return (a, b) => a[field] > b[field] ? 1 : -1
-    // },
-    // applySortWithOption (field) {
-    //   this.tasks.sort(this.sortFunction(field))
-    // },
     showFindidngInput () {
       this.findinginput = !(this.findinginput)
-    },
-    setup (props) {
-      const { tasks, isTasksLoading, totalPages } = this.useTasks(10)
-      const { selectedSort, sortedTasks } = this.useSortedTasks(tasks)
-      const { searchQuery, sortedAndSearchedTasks } = this.useSortedAndSearchedTasks(sortedTasks)
-      return {
-        tasks,
-        totalPages,
-        isTasksLoading,
-        sortedTasks,
-        selectedSort,
-        searchQuery,
-        sortedAndSearchedTasks
-      }
+    }
+  },
+  setup (props) {
+    const { tasks, isTasksLoading, totalPages } = useTasks(10)
+    const { selectedSort, sortedTasks } = useSortedTasks(tasks)
+    const { searchQuery, sortedAndSearchedTasks } = useSortedAndSearchedTasks(sortedTasks)
+    return {
+      useTasks,
+      tasks,
+      totalPages,
+      isTasksLoading,
+      sortedTasks,
+      selectedSort,
+      searchQuery,
+      sortedAndSearchedTasks
     }
   },
   components: {
@@ -151,6 +147,7 @@ export default {
     loader
   }
 }
+
 </script>
 <style>
 .loading {
