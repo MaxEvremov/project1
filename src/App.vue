@@ -58,7 +58,19 @@
       @remove = "removeElement"
       @open = "getRequiredElement"
     />
-    <!-- <div v-intersection ="useTasks" :page = "page" class="observer"></div> -->
+    <div class="page__wrapper">
+      <div
+     v-for = "page in totalPages"
+     :key = "page"
+     class="page"
+     :class="{
+       'currentPage': pageNumber === page
+     }"
+     @click="changePage(page)"
+     >
+     {{page}}
+    </div>
+    </div>
   </div>
 </template>
 
@@ -86,9 +98,7 @@ export default {
       dialogTask: null,
       nameValue: '',
       findinginput: false,
-      pageNumber: 1,
       limit: 10,
-      page: 1,
       loadMoreTasks: false
     }
   },
@@ -122,13 +132,19 @@ export default {
     },
     showFindidngInput () {
       this.findinginput = !(this.findinginput)
+    },
+    changePage (page) {
+      this.pageNumber = page
+      this.fetching()
     }
   },
   setup (props) {
-    const { tasks, isTasksLoading, totalPages } = useTasks(10)
+    const { tasks, isTasksLoading, totalPages, pageNumber, fetching } = useTasks(10)
     const { selectedSort, sortedTasks } = useSortedTasks(tasks)
     const { searchQuery, sortedAndSearchedTasks } = useSortedAndSearchedTasks(sortedTasks)
     return {
+      fetching,
+      pageNumber,
       useTasks,
       tasks,
       totalPages,
