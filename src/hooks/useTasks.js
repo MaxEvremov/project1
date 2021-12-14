@@ -15,14 +15,12 @@ export default function useTasks (limit) {
       })
       totalPages.value = Math.ceil(response.headers['x-total-count'] / limit)
       tasks.value = response.data
-      console.log(tasks.value)
     } catch {
       alert('ошибка')
     } finally {
       isTasksLoading.value = false
     }
   }
-  console.log(tasks)
   onMounted(fetching)
   return {
     tasks, isTasksLoading, totalPages

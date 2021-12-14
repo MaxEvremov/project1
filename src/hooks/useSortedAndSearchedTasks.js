@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 export default function useSortedTasks (sortedTasks) {
-  const searchQuery = ref('')
+  const searchQuery = ref('a')
   const sortedAndSearchedTasks = computed(() => {
     return sortedTasks.value.filter(task => task.title.toLowerCase().includes(searchQuery.value.toLowerCase()))
   })

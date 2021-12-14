@@ -22,7 +22,7 @@
           :options = "options"
           v-show="tasks !== []"
           v-model:show.sync="syncVisible"
-          v-model="selectedSort.value"
+          v-model= "selectedSort"
         >
         </my-select>
         </div>
@@ -54,7 +54,7 @@
       <loader/>
     </div>
     <tasksList v-else
-      :tasks = "sortedTasks"
+      :tasks = "sortedAndSearchedTasks"
       @remove = "removeElement"
       @open = "getRequiredElement"
     />
@@ -77,9 +77,9 @@ export default {
   data () {
     return {
       options: [
-        { id: 1, name: 'По названию', value: 'title' },
-        { id: 2, name: 'По айди', value: 'id' },
-        { id: 3, name: 'По комментарию', value: 'body' }
+        { id: 1, name: 'По названию', prm: 'title' },
+        { id: 2, name: 'По айди', prm: 'id' },
+        { id: 3, name: 'По комментарию', prm: 'body' }
       ],
       dialogVisisble: false,
       syncVisible: false,

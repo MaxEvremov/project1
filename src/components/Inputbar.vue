@@ -40,8 +40,7 @@ export default {
       this.$emit('create', this.task)
       this.task = {
         title: '',
-        date: '',
-        text: ''
+        body: ''
       }
     }
   }

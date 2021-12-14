@@ -8,14 +8,15 @@
         </div>
         <select
             class="selectInput"
-            v-model="nameValues"
+            :value = "modelValue"
+            v-model="nameValue"
             @change="changeOption">
             <option
                 v-for="option in options"
-                :key="option.value"
+                :key="option.prm"
                 :value="option"
                 >
-                {{ option.name}}
+                {{ option.name }}
             </option>
             <slot></slot>
         </select>
@@ -41,8 +42,8 @@ export default {
   },
   methods: {
     changeOption () {
-      const sortParameter = this.nameValues.value
-      this.$emit('option', sortParameter)
+      const sortParameter = this.nameValue.prm
+      this.$emit('update:modelValue', String(sortParameter))
     },
     hideDialog () {
       this.$emit('update:show', false)
