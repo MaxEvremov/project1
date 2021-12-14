@@ -5,11 +5,12 @@ export default function useTasks (limit) {
   const tasks = ref([])
   const totalPages = ref(0)
   const isTasksLoading = ref(true)
+  const pageNumber = ref(4)
   const fetching = async () => {
     try {
       const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
         params: {
-          _page: 1,
+          _page: pageNumber.value,
           __limit: limit
         }
       })
@@ -23,6 +24,6 @@ export default function useTasks (limit) {
   }
   onMounted(fetching)
   return {
-    tasks, isTasksLoading, totalPages
+    tasks, isTasksLoading, totalPages, pageNumber, fetching
   }
 }
