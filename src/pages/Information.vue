@@ -2,8 +2,8 @@
 <div>
      <div class="menu">
                 <p class="menu-header">Меню</p>
-                <router-link class="roter-link" to="/"> На главную </router-link>
-                <router-link class="roter-link" to="/tasks"> Задания </router-link>
+                <router-link class="router-link" to="/"> На главную </router-link>
+                <router-link class="router-link" to="/tasks"> Задания </router-link>
         </div>
      <div class="information">
          <h2 class="information-title" style="color: black">Лень выдумывать что-то, поэтому вот информация <br> про двигатель M30B34</h2>

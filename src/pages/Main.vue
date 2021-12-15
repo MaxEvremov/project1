@@ -12,8 +12,8 @@
             </div>
         <div class="menu">
                 <p class="menu-header">Меню сайта</p>
-                <router-link class="roter-link" to="/tasks"> Задания </router-link>
-                <router-link class="roter-link" to="/information"> Информация </router-link>
+                <router-link class="router-link" to="/tasks"> Задания </router-link>
+                <router-link class="router-link" to="/information"> Информация </router-link>
         </div>
     </div>
 </template>
@@ -76,7 +76,7 @@
     margin-top: 0px;
     height: 30px;
 }
-.roter-link {
+.router-link {
     border-radius: ;
     font-size: 28px;
     margin-right: 20px;

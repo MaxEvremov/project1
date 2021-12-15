@@ -3,8 +3,8 @@
      <div class="outside-menu">
          <div class="menu">
                 <p class="menu-header">Меню сайта</p>
-                <router-link class="roter-link" to="/"> На Главную </router-link>
-                <router-link class="roter-link" to="/information"> Информация </router-link>
+                <router-link class="router-link" to="/"> На Главную </router-link>
+                <router-link class="router-link" to="/information"> Информация </router-link>
         </div>
      </div>
    <div>
@@ -267,7 +267,7 @@ export default {
     margin-top: 0px;
     height: 30px;
 }
-.roter-link {
+.router-link {
     border-radius: 10px;
     font-size: 28px;
     margin-right: 20px;
