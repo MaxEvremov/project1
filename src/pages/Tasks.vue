@@ -285,7 +285,7 @@ export default {
     margin-right: auto;
     width: 600px;
     height: 165px;
-    margin-top: 20px;
+    margin-top: 120px;
     background-color:rgb(125, 165, 165);
     color: black;
 }

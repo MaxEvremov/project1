@@ -1,7 +1,7 @@
 <template>
 <div>
      <div class="menu">
-                <p class="menu-header">Меню</p>
+                <p class="menu-header" >Меню</p>
                 <router-link class="router-link" to="/"> На главную </router-link>
                 <router-link class="router-link" to="/tasks"> Задания </router-link>
         </div>
@@ -144,6 +144,9 @@
 </div>
 </template>
 <style scoped>
+.menu {
+    margin-top: 130px;
+}
 .information {
     border: solid 1px black ;
     border-radius: 20px;
@@ -151,7 +154,7 @@
     height: 3050px;
     background-color: rgb(125, 165, 165);
     margin-bottom: 20px;
-    margin-top: 80px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
 }

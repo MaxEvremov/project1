@@ -29,8 +29,7 @@ export default {
     return {
       task: {
         title: '',
-        date: '',
-        text: ''
+        body: ''
       }
     }
   },

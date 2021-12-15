@@ -25,7 +25,7 @@
     height: 500px;
     background-color: rgb(125, 165, 165);
     margin-bottom: 20px;
-    margin-top: 80px;
+    margin-top: 120px;
     margin-left: auto;
     margin-right: auto;
 }
