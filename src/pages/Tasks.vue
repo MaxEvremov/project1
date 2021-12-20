@@ -65,7 +65,9 @@
       @remove = "removeElement"
       @open = "getRequiredElement"
     />
-    <div class="page__wrapper">
+    <div
+    v-show="tasks.length > 0"
+    class="page__wrapper">
       <div
      v-for = "page in totalPages"
      :key = "page"
@@ -285,7 +287,7 @@ export default {
     margin-right: auto;
     width: 600px;
     height: 165px;
-    margin-top: 120px;
+    margin-top: 20px;
     background-color:rgb(125, 165, 165);
     color: black;
 }

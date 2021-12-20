@@ -1,27 +1,21 @@
 <template>
   <div class="userMenu">
-    <div>
-      <table class="userInfo">
-        <body>
-          <tr class="tr">
-            <th class="th">Имя</th>
-            <th class="th">{{user.forname}}</th>
-          </tr>
-          <tr class="tr">
-            <th class="th">Фамилия</th>
-            <th class="th">{{user.lastname}}</th>
-          </tr>
-          <tr class="tr">
-            <th class="th">Род занятий</th>
-            <th class="th">{{user.life}}</th>
-          </tr>
+      <div class="userInfo">
+            <p class="values">Имя</p>
+            <p class="values">{{user.forname}}</p>
+            <p class="values">Фамилия</p>
+            <p class="values">{{user.lastname}}</p>
+            <p class="values">Род занятий</p>
+            <p class="values">{{user.life}}</p>
           <my-button @click="$emit('verif')">Выход</my-button>
           <my-button @click="changeData"> изменить данные</my-button>
-        </body>
-      </table>
-    </div>
-    <div>
-    </div>
+      </div>
+      <div class="links">
+        <my-button class="userbutton"><router-link style="text-decoration: none; color: black" to="/">Перейти в главное меню</router-link></my-button>
+        <my-button class="userbutton"><router-link style="text-decoration: none; color: black" to="/tasks">перейти в tasks</router-link></my-button>
+        <my-button class="userbutton"><router-link style="text-decoration: none; color: black" to="/information">перейти к информации</router-link></my-button>
+        <my-button class="userbutton"><router-link style="text-decoration: none; color: black" to="/gridtesting">WIKImotors</router-link></my-button>
+      </div>
   </div>
 </template>
 <script>
@@ -39,33 +33,37 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .userMenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   border: solid 1px black ;
   border-radius: 10px;
-  margin-top: 0px;
   width: 100%;
   height: 190px;
-  background-color: rgb(125, 165, 165);
-}
-.userInfo {
-  border: solid 1px black ;
-  margin-top: 10px;
-  margin-left: 10px;
-  border-radius: 20px;
-  width: 400px;
-  height: 170px;
-  background-color: rgb(125, 165, 165);
-  padding: 5px;
-}
-.tr {
-  width: 400px;
-  margin-left: 20px;
   background-color: rgb(250, 205, 120);
 }
-.th {
-  border-radius: 5px;
-  width: 200px;
-  text-align: left;
+.userbutton {
+  display: grid;
+  align-items: left;
+}
+.userInfo {
+  min-width: 300px;
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 20px;
+  padding: 5px;
+  gap: 5px;
+}
+.values {
+  max-height: 8px;
+  display: grid;
+  min-height: 40px;
+  background-color: rgb(125, 165, 165);
+  margin: 0ch;
+  border-radius: 10px;
+  align-items: center;
+  color: black;
 }
 </style>

@@ -2,7 +2,7 @@
  <div id="App" class="app">
    <div class="topbar">
       <div class="not-verification" v-if="verification === false">
-        <div v-if="show === false" style="padding:10px; color: black">
+        <div v-if="show === false" style="padding:5px; color: black">
           Вы не вошли
         </div>
         <login
@@ -26,12 +26,13 @@ export default {
     return {
       show: false,
       verification: false,
+      registration: false,
       user: [1],
       users: [
-        { login: 'admin', password: 'admin', forname: 'Макс', lastname: 'Ефремов', life: 'ленивец', image: '@/components/images/1.jpeg' },
-        { login: '123', password: '123', forname: 'Колямбус', lastname: 'Коршунов', life: 'дома сидит постоянно, заебал уже', image: '@/components/images/kolya.jpeg' },
-        { login: 'qwe', password: 'qwe', forname: 'Никитос', lastname: 'не знаю фамилию', life: ' делает металлоагрегатор', image: '@/components/images/nikitos.jpg' },
-        { login: 'zxc', password: 'zxc', forname: 'Гриша', lastname: 'Никешин', life: 'Ебёт всех в офисе', image: '@/components/images/nikeshin.jpg' }
+        { login: 'admin', password: 'admin', forname: '1', lastname: '1', life: '1', image: '@/components/images/1.jpeg' },
+        { login: '123', password: '123', forname: '2', lastname: '2', life: '2', image: '@/components/images/kolya.jpeg' },
+        { login: 'qwe', password: 'qwe', forname: '3', lastname: '3', life: '3', image: '@/components/images/nikitos.jpg' },
+        { login: 'zxc', password: 'zxc', forname: '4', lastname: '4', life: '4', image: '@/components/images/nikeshin.jpg' }
       ]
     }
   },
@@ -66,17 +67,14 @@ export default {
 <style>
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: grid;
   margin: 0;
+  grid-template-rows: repeat(2 1fr);
 }
 .topbar {
+  display: grid;
   border-radius: 10px;
   width: 100%;
-  height: 100px;
   background-color: rgb(125, 165, 165);
 }
 </style>

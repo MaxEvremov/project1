@@ -10,18 +10,25 @@
         <my-input
           v-model="logInf.password"
           placeholder="Введите пароль"/>
+      </div>
+      <div>
         <my-button
-          @click="sendLogInf">
+          @click="sendLogInf"
+          style="margin-bottom:10px">
           Войти
           </my-button>
         <my-button
           @click="showOrHideLogin">
           Закрыть
           </my-button>
+          <my-button
+          @click="registration">
+          Регистрация
+          </my-button>
      </div>
    </div>
    <div v-else>
-      <my-button @click="showOrHideLogin">Войти</my-button>
+      <my-button @click="showOrHideLogin" style="margin-top:0px; margin-bottom:5px">Войти</my-button>
     </div>
   </div>
 </template>
@@ -46,6 +53,10 @@ export default {
     showOrHideLogin () {
       this.showoption = !this.show
       this.$emit('update:modelValue', this.showoption)
+      this.logInf = {
+        login: '',
+        password: ''
+      }
     },
     sendLogInf () {
       console.log('данные из поля ввода логина и пароля отправлены в функцию проверки')
@@ -62,7 +73,7 @@ export default {
 <style scoped>
 .login-menu {
   border-radius:10px ;
-  width: 200px;
+  width: 300px;
   height: 100px;
   background-color: rgb(125, 165, 165);
   margin: auto;
